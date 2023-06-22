@@ -11,18 +11,18 @@ datasource db {
 }
 
 model User {
-  userId   Int       @id @default(autoincrement())
+  id   Int       @id @default(autoincrement())
   email    String    @unique
   password String
   expenses Expense[]
 }
 
 model Expense {
-  expenseId Int       @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   title     String
   amount    Float
   date      DateTime
   dateAdded DateTime @default(now())
   userId    Int
-  user      User     @relation(fields: [userId], references: [userId])
+  User      User     @relation(fields: [userId], references: [id])
 }

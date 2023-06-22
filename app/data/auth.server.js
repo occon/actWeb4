@@ -45,26 +45,24 @@ export async function signup({ email, password }) {
 
 export async function login({email, password}) {
     const existingUser = await prisma.user.findFirst({ where: { email } });
-
     if (!existingUser) {
         const error = new Error(
-            'Log in failed, please check provided username.'
+                'Log in failed, please check provided username or password.'
             );
-        error.status = 401;
-        throw error;
-    }
-
-    const passwordCorrect = await compare(password, existingUser.password);
-
-    if(!passwordCorrect){
-        const error = new Error(
-            'Log in failed, please check provided username.'
+            error.status = 422;
+            throw error;
+        }
+        const passwordCorrect = await compare(password, existingUser.password);
+        
+        if(!passwordCorrect){
+            const error = new Error(
+                'Log in failed, please check provided username or password.'
             );
-        error.status = 401;
+        error.status = 422;
         throw error; 
     }
-
     return createUserSession(existingUser.id, '/expenses');
+
 }
 
 export async function getUserFromSession ( request) {

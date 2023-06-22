@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Form, Link, useActionData, useLoaderData, useNavigation, useMatches, useParams } from "@remix-run/react";
 
 function ExpenseForm() {
@@ -10,6 +11,7 @@ function ExpenseForm() {
   const expenseData = expenses.find((expense) => expense.id === params.id);
   
   if(params.id && !expenseData) {
+    console.log(params.id);
     return <p>Invalid expense</p>;
   }
   

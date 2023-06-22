@@ -11,23 +11,23 @@ export const userSeeder = async() => {
         },
         {
             email: 'gstacy@esu.edu',
-            password: 'peterparker'
+            password: 'gwenstacy'
         },
         {
             email: 'steverogers@stark.com',
-            password: 'peterparker'
+            password: 'steverogers'
         },
         {
             email: 'slang@pym.org',
-            password: 'peterparker'
+            password: 'scottlang'
         },
         {
             email: 'drstrange@supreme.com',
-            password: 'peterparker'
+            password: 'drstrange'
         },
         {
             email: 'p.pots@stark.com',
-            password: 'peterparker'
+            password: 'pepperpots'
         },
     ]
     })

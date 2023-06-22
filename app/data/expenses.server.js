@@ -35,6 +35,7 @@ export async function getExpenses(userId) {
 export async function getExpense(id) {
 
     try {
+        console.log(id);
         const expense = await prisma.expense.findFirst({ where: { id } })
         return expense;
     } catch (error) {
@@ -51,18 +52,17 @@ export async function updateExpense(id, expenseData) {
                 amount: +expenseData.amount,
                 date: new Date(expenseData.date)
             },
-        })
+        });
     } catch (error) {
         throw new Error('Failed to update expense. ');
     }
 }
 
 export async function deleteExpense(id) {
-
     try {
         await prisma.expense.delete({
-            where: { id }
-        })
+            where: { id: id, }
+        });
     } catch (error) {
         throw new Error('Failed to delete expense.');
     }
